@@ -22,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [\App\Http\Controllers\UserController::class, 'logout']);
 });
+Route::get('/paket', [PaketController::class, 'index']);
+Route::post('/paket', [PaketController::class, 'store']);
+Route::put('/paket/{id_paket}', [PaketController::class, 'update']);
+Route::delete('/paket/{id_paket}', [PaketController::class, 'destroy']);
