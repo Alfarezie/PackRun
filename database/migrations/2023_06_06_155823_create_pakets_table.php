@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('pakets', function (Blueprint $table) {
             $table->id('id_paket');
-            $table->integer('no_resi');
-            $table->string('receiver');
-            $table->integer('PhoneNum');
-            $table->string('toAddress');
-            $table->integer('zip_code_to');
-            $table->string('sender');
-            $table->integer('sendPhoneNum');
-            $table->integer('fragile');
-            $table->date('estimated_time');
+            $table->integer('no_resi')->nullable();
+            $table->string('receiver_name');
+            $table->bigInteger('receiver_PhoneNum');
+            $table->string('receiver_Address');
+            $table->integer('receiver_zip_code');
+            $table->string('sender_name');
+            $table->bigInteger('sender_PhoneNum');
+            $table->boolean('fragile');
             $table->timestamps();
         });
     }

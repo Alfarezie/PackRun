@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Paket;
+use App\Models\Lacak;
 
-class PaketController extends Controller
+class LacakController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class PaketController extends Controller
     public function index()
     {
         return response()->json([
-            Paket::all()
+            Lacak::all()
         ]);
     }
 
@@ -28,10 +28,15 @@ class PaketController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $id_paket)
     {
         return response()->json([
-            Paket::create($request -> all())
+            Lacak::updateOrCreate([
+                'id_paket' => $id_paket
+            ], 
+                $request -> all()
+            ),
+            Lacak::find($id_paket)->Paket
         ]);
     }
 
@@ -54,13 +59,9 @@ class PaketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id_paket)
+    public function update(Request $request)
     {
-        $paket=Paket::find($id_paket);
-        $paket->update($request->all());
-        return response()->json([
-            $paket
-        ]);
+        //
     }
 
     /**
@@ -68,10 +69,6 @@ class PaketController extends Controller
      */
     public function destroy($id_paket)
     {
-        $paket=Paket::find($id_paket);
-        $paket->delete();
-        return response()->json([
-            'Success'
-        ]);
+        //
     }
 }

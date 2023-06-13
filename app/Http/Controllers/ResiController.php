@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paket;
 
-class PaketController extends Controller
+class ResiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class PaketController extends Controller
     public function index()
     {
         return response()->json([
-            Paket::all()
+            Paket::select('id_paket', 'no_resi')->get()
         ]);
     }
 
@@ -30,9 +30,7 @@ class PaketController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json([
-            Paket::create($request -> all())
-        ]);
+        //
     }
 
     /**
@@ -54,13 +52,9 @@ class PaketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id_paket)
+    public function update(Request $request, $no_resi)
     {
-        $paket=Paket::find($id_paket);
-        $paket->update($request->all());
-        return response()->json([
-            $paket
-        ]);
+        //
     }
 
     /**
@@ -69,7 +63,7 @@ class PaketController extends Controller
     public function destroy($id_paket)
     {
         $paket=Paket::find($id_paket);
-        $paket->delete();
+        $paket->update(['no_resi'=>null]);
         return response()->json([
             'Success'
         ]);

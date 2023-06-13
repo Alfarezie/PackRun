@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Paket;
+use App\Models\Riwayat;
 
-class PaketController extends Controller
+class RiwayatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class PaketController extends Controller
     public function index()
     {
         return response()->json([
-            Paket::all()
+            Riwayat::all()
         ]);
     }
 
@@ -31,7 +31,7 @@ class PaketController extends Controller
     public function store(Request $request)
     {
         return response()->json([
-            Paket::create($request -> all())
+            Riwayat::create($request -> all())
         ]);
     }
 
@@ -56,20 +56,16 @@ class PaketController extends Controller
      */
     public function update(Request $request, $id_paket)
     {
-        $paket=Paket::find($id_paket);
-        $paket->update($request->all());
-        return response()->json([
-            $paket
-        ]);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id_paket)
+    public function destroy($id_riwayat)
     {
-        $paket=Paket::find($id_paket);
-        $paket->delete();
+        $riwayat=Riwayat::find($id_riwayat);
+        $riwayat->delete();
         return response()->json([
             'Success'
         ]);

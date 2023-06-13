@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Paket;
+use App\Models\Ongkir;
 
-class PaketController extends Controller
+class OngkirController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class PaketController extends Controller
     public function index()
     {
         return response()->json([
-            Paket::all()
+            Ongkir::all()
         ]);
     }
 
@@ -31,14 +31,14 @@ class PaketController extends Controller
     public function store(Request $request)
     {
         return response()->json([
-            Paket::create($request -> all())
+            Ongkir::create($request -> all())
         ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Paket $paket)
+    public function show(Ongkir $ongkir)
     {
         //
     }
@@ -46,7 +46,7 @@ class PaketController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Paket $paket)
+    public function edit(Ongkir $ongkir)
     {
         //
     }
@@ -54,24 +54,16 @@ class PaketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id_paket)
+    public function update(Request $request, Ongkir $ongkir)
     {
-        $paket=Paket::find($id_paket);
-        $paket->update($request->all());
-        return response()->json([
-            $paket
-        ]);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id_paket)
+    public function destroy(Ongkir $ongkir)
     {
-        $paket=Paket::find($id_paket);
-        $paket->delete();
-        return response()->json([
-            'Success'
-        ]);
+        //
     }
 }
