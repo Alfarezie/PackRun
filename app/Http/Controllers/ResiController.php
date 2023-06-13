@@ -12,9 +12,7 @@ class ResiController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            Paket::select('id_paket', 'no_resi')->get()
-        ]);
+        //
     }
 
     /**
@@ -36,9 +34,11 @@ class ResiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Paket $paket)
+    public function show($no_resi)
     {
-        //
+        return response()->json([
+            Paket::where('no_resi', '=', $no_resi)->first()
+        ]);
     }
 
     /**
